@@ -1,12 +1,14 @@
 import React, { useContext } from 'react';
 import Navbar from '../Components/Navbar';
 import { FaGoogle } from 'react-icons/fa';
-import { Link } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../Context/AuthContext';
 import toast from 'react-hot-toast';
 
 const Login = () => {
-    const { SignInWithGoogle, SignInEmailAndPass } = useContext(AuthContext)
+    const { SignInWithGoogle, SignInEmailAndPass } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
 
 
     // signIn with google 
@@ -14,6 +16,7 @@ const Login = () => {
         SignInWithGoogle()
             .then(() => {
                 toast.success('Successfully Login!');
+                navigate(location.state || "/");
             })
             .catch(err => {
                 toast.error("Successfully Login Failed");
@@ -31,15 +34,16 @@ const Login = () => {
 
         SignInEmailAndPass(email, password)
             .then(() => {
-                toast.success('Successfully Login!')
+                toast.success('Successfully Login!');
+                navigate(location.state || "/");
             })
             .catch(err => {
                 toast.error("Successfully Login Failed")
                 console.log(err);
             })
-
-
     }
+
+    
     return (
         <div>
             <header>

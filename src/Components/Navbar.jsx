@@ -1,11 +1,24 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router';
-import ClickBtn from './ClickBtn';
 import { FaShoppingCart } from 'react-icons/fa';
-import { SiGooglemarketingplatform } from 'react-icons/si';
 import { MdDarkMode, MdLightMode } from 'react-icons/md';
+import { AuthContext } from '../Context/AuthContext';
+import toast from 'react-hot-toast';
 
 const Navbar = () => {
+    const { user,SignOut } = useContext(AuthContext);
+
+
+    const handleLogout =()=>{
+        SignOut()
+        .then(()=>{
+            toast.success("Logout Successfully");
+        })
+        .catch(err=>{
+            toast.error("Logout Failed");
+            console.log(err);
+        })
+    }
 
     const NavLinks =
         <>
@@ -73,14 +86,39 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-end space-x-5">
                     <FaShoppingCart size={25} className='cursor-pointer' />
-                    <Link to="/login">
-                        <button
-                            className="font-bold border cursor-pointer text-lg uppercase w-30 h-10 text-[#000000] justify-center transition-colors duration-300 hover:bg-[#E7AA3A]"
-                        >
-                            Login
-                        </button>
-                    </Link>
-                    
+                    {user ? (
+                        <>
+                            <div className="group relative cursor-pointer">
+                                <img
+                                    src={user?.photoURL}
+                                    alt="User"
+                                    className="w-10 h-10 rounded-full border-2 border-white"
+                                />
+                                <div className="absolute left-1/2 -translate-x-1/2 mt-2 w-max bg-black text-white text-sm rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-50">
+                                    {user.displayName || "User"}
+                                </div>
+                            </div>
+                            <Link to="/"
+                            onClick={handleLogout}
+                            >
+                                <button
+                                    className="font-bold border cursor-pointer text-lg uppercase w-30 h-10 text-[#000000] justify-center transition-colors duration-300 hover:bg-[#e75d3a]"
+                                >
+                                    Logout
+                                </button>
+                            </Link>
+                        </>
+                    ) : (
+                        <Link to="/login">
+                            <button
+                                className="font-bold border cursor-pointer text-lg uppercase w-30 h-10 text-[#000000] justify-center transition-colors duration-300 hover:bg-[#E7AA3A]"
+                            >
+                                Login
+                            </button>
+                        </Link>
+                    )}
+
+
                     <MdDarkMode size={25} />
                     <MdLightMode size={25} />
                 </div>
