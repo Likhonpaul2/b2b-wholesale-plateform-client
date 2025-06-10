@@ -25,7 +25,7 @@ const AllProduct = () => {
                 <Navbar/>
             </header>
             <main>
-                <div className='grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 container mx-auto space-y-10 my-20'>
+                <div className='grid lg:grid-cols-5 md:grid-cols-3 grid-cols-1 container mx-auto space-y-10 my-20'>
                     {
                         allProducts.map(product => <Card product={product} key={product._id}></Card>)
                     }
