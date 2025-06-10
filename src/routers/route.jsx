@@ -8,6 +8,7 @@ import Categorizes from "../pages/Categorizes";
 import MyProduct from "../pages/MyProduct";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
+import PrivateRoutes from "./PrivateRoutes";
 
 
 export const router = createBrowserRouter([
@@ -28,23 +29,23 @@ export const router = createBrowserRouter([
   },
   {
     path: "/all-products",
-    element: <AllProduct />
+    element: <PrivateRoutes><AllProduct /></PrivateRoutes>
   },
   {
     path: "/add-products",
-    element: <AddProduct />
+    element: <PrivateRoutes><AddProduct /></PrivateRoutes>
   },
   {
     path: "/my-products",
-    element: <MyProduct />
+    element: <PrivateRoutes><MyProduct /></PrivateRoutes>
   },
   {
     path: "/login",
-    element: <Login/>
+    element: <Login />
   },
   {
     path: "/register",
-    element: <Register/>
+    element: <Register />
   },
   {
     path: "*",

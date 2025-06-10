@@ -1,0 +1,57 @@
+[
+  {
+    "image": "https://i.ibb.co/jk5wvCkZ/1.png",
+    "name": "CrispyChef Air Fryer XL",
+    "brand": "KitchenPro",
+    "category": "Home & Kitchen Appliances",
+    "main_quantity": 200,
+    "minimum_selling_quantity": 8,
+    "price": 95,
+    "rating": 4.4,
+    "description": "Oil-free air fryer with digital control and large capacity."
+  },
+  {
+    "image": "https://i.ibb.co/jvzFM9P3/2.png",
+    "name": "BlendMax Power Blender",
+    "brand": "HomeTech",
+    "category": "Home & Kitchen Appliances",
+    "main_quantity": 300,
+    "minimum_selling_quantity": 15,
+    "price": 70,
+    "rating": 4.1,
+    "description": "High-speed blender with multiple settings and durable blades."
+  },
+  {
+    "image": "https://i.ibb.co/sdL22Bw4/3.png",
+    "name": "QuickSteam Rice Cooker",
+    "brand": "CookEase",
+    "category": "Home & Kitchen Appliances",
+    "main_quantity": 400,
+    "minimum_selling_quantity": 12,
+    "price": 45,
+    "rating": 4.3,
+    "description": "Multi-function rice cooker with timer and keep-warm mode."
+  },
+  {
+    "image": "https://i.ibb.co/C57NVcSR/4.png",
+    "name": "DustAway Robot Vacuum",
+    "brand": "CleanBot",
+    "category": "Home & Kitchen Appliances",
+    "main_quantity": 150,
+    "minimum_selling_quantity": 6,
+    "price": 210,
+    "rating": 4.6,
+    "description": "Smart robot vacuum cleaner with app control and auto charging."
+  },
+  {
+    "image": "https://i.ibb.co/GfyC8bfc/5.png",
+    "name": "HeatMate Microwave Oven",
+    "brand": "QuickHeat",
+    "category": "Home & Kitchen Appliances",
+    "main_quantity": 250,
+    "minimum_selling_quantity": 10,
+    "price": 130,
+    "rating": 4.2,
+    "description": "Digital microwave with grill and multiple pre-set cooking modes."
+  }
+]

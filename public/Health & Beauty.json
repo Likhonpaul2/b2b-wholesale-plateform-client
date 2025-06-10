@@ -1,0 +1,57 @@
+[
+  {
+    "image": "https://i.ibb.co/DHM7B2WZ/1.png",
+    "name": "GlowEssence Skincare Set",
+    "brand": "DermaPlus",
+    "category": "Health & Beauty",
+    "main_quantity": 300,
+    "minimum_selling_quantity": 20,
+    "price": 85,
+    "rating": 4.5,
+    "description": "Complete skincare set with cleanser, toner, and moisturizer for glowing skin."
+  },
+  {
+    "image": "https://i.ibb.co/LDYgfs12/2.png",
+    "name": "SonicClean Electric Toothbrush",
+    "brand": "SmilePro",
+    "category": "Health & Beauty",
+    "main_quantity": 250,
+    "minimum_selling_quantity": 10,
+    "price": 48,
+    "rating": 4.4,
+    "description": "Rechargeable electric toothbrush with 5 cleaning modes and smart timer."
+  },
+  {
+    "image": "https://i.ibb.co/vKp9Fhq/3.png",
+    "name": "BlowPro Ionic Hair Dryer",
+    "brand": "StyleMate",
+    "category": "Health & Beauty",
+    "main_quantity": 200,
+    "minimum_selling_quantity": 15,
+    "price": 65,
+    "rating": 4.2,
+    "description": "Professional ionic hair dryer for fast drying and smooth finish."
+  },
+  {
+    "image": "https://i.ibb.co/YFP9sys3/4.png",
+    "name": "DeepRelief Massage Gun",
+    "brand": "BodyEase",
+    "category": "Health & Beauty",
+    "main_quantity": 180,
+    "minimum_selling_quantity": 8,
+    "price": 110,
+    "rating": 4.6,
+    "description": "Powerful percussion massage gun to relax sore muscles and improve recovery."
+  },
+  {
+    "image": "https://i.ibb.co/Gv2gxC0C/5.png",
+    "name": "ProNails Gel Manicure Kit",
+    "brand": "NailArtistry",
+    "category": "Health & Beauty",
+    "main_quantity": 350,
+    "minimum_selling_quantity": 25,
+    "price": 39,
+    "rating": 4.3,
+    "description": "Complete gel nail kit with LED lamp, polishes, and tools for salon-style nails."
+  }
+]

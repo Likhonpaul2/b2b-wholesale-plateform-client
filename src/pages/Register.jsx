@@ -24,6 +24,7 @@ const Register = () => {
         // firebase auth call 
         CreateUserWithEmailAndPassword(UserEmail, UserPassword)
             .then(() => {
+                // update name & photo 
                 UpdateUserPhotoAndName(UserName, UserPhotoURL)
                     .then(() => {
                         toast.success("Account Create Successfully");
@@ -38,10 +39,6 @@ const Register = () => {
                 toast.error("Account Create Unsuccessfully");
                 console.log(err);
             })
-
-
-
-
 
     }
 

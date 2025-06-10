@@ -9,6 +9,22 @@ const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(false);
 
+    // dark mode 
+    const [darkMode, setDarkMode] = useState(() => {
+        // Persist theme in localStorage
+        const saved = localStorage.getItem("darkMode");
+        return saved ? JSON.parse(saved) : false;
+    });
+
+    useEffect(() => {
+        if (darkMode) {
+            document.documentElement.classList.add("dark");
+        } else {
+            document.documentElement.classList.remove("dark");
+        }
+        localStorage.setItem("darkMode", JSON.stringify(darkMode));
+    }, [darkMode]);
+
 
     // sign in with google 
     const SignInWithGoogle = () => {
@@ -60,6 +76,8 @@ const AuthProvider = ({ children }) => {
         SignOut,
         CreateUserWithEmailAndPassword,
         UpdateUserPhotoAndName,
+        darkMode,
+        setDarkMode,
     }
 
 

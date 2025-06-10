@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext} from 'react';
 import { Link, NavLink } from 'react-router';
 import { FaShoppingCart } from 'react-icons/fa';
 import { MdDarkMode, MdLightMode } from 'react-icons/md';
@@ -6,18 +6,23 @@ import { AuthContext } from '../Context/AuthContext';
 import toast from 'react-hot-toast';
 
 const Navbar = () => {
-    const { user,SignOut } = useContext(AuthContext);
+    const { user, SignOut, darkMode, setDarkMode } = useContext(AuthContext);
+
+    // dark mode 
+    const handleDarkMode = () => {
+        setDarkMode(!darkMode);
+    }
 
 
-    const handleLogout =()=>{
+    const handleLogout = () => {
         SignOut()
-        .then(()=>{
-            toast.success("Logout Successfully");
-        })
-        .catch(err=>{
-            toast.error("Logout Failed");
-            console.log(err);
-        })
+            .then(() => {
+                toast.success("Logout Successfully");
+            })
+            .catch(err => {
+                toast.error("Logout Failed");
+                console.log(err);
+            })
     }
 
     const NavLinks =
@@ -64,7 +69,7 @@ const Navbar = () => {
 
 
     return (
-        <div className="bg-[var(--light_bg_color:#f6f6f6)] border-b">
+        <div className="border-b">
             <div className="navbar container mx-auto">
                 <div className="navbar-start">
                     <div className="dropdown">
@@ -99,10 +104,10 @@ const Navbar = () => {
                                 </div>
                             </div>
                             <Link to="/"
-                            onClick={handleLogout}
+                                onClick={handleLogout}
                             >
                                 <button
-                                    className="font-bold border cursor-pointer text-lg uppercase w-30 h-10 text-[#000000] justify-center transition-colors duration-300 hover:bg-[#e75d3a]"
+                                    className="font-bold border cursor-pointer text-lg uppercase w-30 h-8 text-[#000000] justify-center transition-colors duration-300 hover:bg-[#e75d3a]"
                                 >
                                     Logout
                                 </button>
@@ -111,16 +116,20 @@ const Navbar = () => {
                     ) : (
                         <Link to="/login">
                             <button
-                                className="font-bold border cursor-pointer text-lg uppercase w-30 h-10 text-[#000000] justify-center transition-colors duration-300 hover:bg-[#E7AA3A]"
+                                className="font-bold border cursor-pointer text-lg uppercase w-30 h-8 text-[#000000] justify-center transition-colors duration-300 hover:bg-[#E7AA3A]"
                             >
                                 Login
                             </button>
                         </Link>
                     )}
+                    {
+                        darkMode === true
+                            ?
+                            <MdDarkMode size={25} className='cursor-pointer' onClick={handleDarkMode} />
+                            :
+                            <MdLightMode size={25} className='cursor-pointer' onClick={handleDarkMode} />
+                    }
 
-
-                    <MdDarkMode size={25} />
-                    <MdLightMode size={25} />
                 </div>
             </div>
         </div>
