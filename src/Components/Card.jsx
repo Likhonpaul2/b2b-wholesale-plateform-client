@@ -30,7 +30,9 @@ const Card = ({ product }) => {
                 <Link to={`/all-products/${_id}`}>
                     <button className='bg-[#FA6C48] text-white mt-5 w-full cursor-pointer hover:bg-white hover:text-[#FA6C48] duration-150 hover:border hover:border-[#FA6C48]'>View Details</button>
                 </Link>
-                <button className='bg-[#FA6C48] text-white mt-2 w-full cursor-pointer hover:bg-white hover:text-[#FA6C48] duration-150 hover:border hover:border-[#FA6C48]'>Update</button>
+                <Link to={`/update-product/${_id}`}>
+                    <button className='bg-[#FA6C48] text-white mt-2 w-full cursor-pointer hover:bg-white hover:text-[#FA6C48] duration-150 hover:border hover:border-[#FA6C48]'>Update</button>
+                </Link>
             </div>
         </div>
 
