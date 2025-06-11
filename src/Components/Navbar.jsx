@@ -47,7 +47,7 @@ const Navbar = () => {
                     ? 'text-black-500 font-semibold underline underline-offset-4'
                     : 'text-black  hover:underline hover:underline-offset-4 transition duration-700'
             }>
-                All Products
+                All Product
             </NavLink>
             <NavLink to="/add-products" className={({ isActive }) =>
                 isActive

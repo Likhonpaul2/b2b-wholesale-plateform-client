@@ -22,15 +22,15 @@ const Card = ({ product }) => {
                     emptySymbol={<FaRegStar className="text-[#FA6C48]" />}
                     fullSymbol={<FaStar className="text-[#FA6C48]" />}
                     initialRating={rating}
-                    onChange={(rate) => console.log(rate)}
+                    // onChange={(rate) => console.log(rate)}
+                    readonly
                 />
                 <h3 className='text-[17px] text-[#FA6C48] font-bold'>{price} <span>BDT</span></h3>
 
                 <Link to={`/all-products/${_id}`}>
                     <button className='bg-[#FA6C48] text-white mt-5 w-full cursor-pointer hover:bg-white hover:text-[#FA6C48] duration-150 hover:border hover:border-[#FA6C48]'>View Details</button>
                 </Link>
-                <button className='bg-[#FA6C48] text-white mt-2 w-full cursor-pointer hover:bg-white hover:text-[#FA6C48] duration-150 hover:border hover:border-[#FA6C48]'>Add To Cart</button>
-
+                <button className='bg-[#FA6C48] text-white mt-2 w-full cursor-pointer hover:bg-white hover:text-[#FA6C48] duration-150 hover:border hover:border-[#FA6C48]'>Update</button>
             </div>
         </div>
 
