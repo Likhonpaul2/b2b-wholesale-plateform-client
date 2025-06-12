@@ -10,7 +10,6 @@ const AllProduct = () => {
         fetch(`${import.meta.env.VITE_server}/all-products`)
         .then((res) => res.json())
         .then((data) => {
-            console.log(data);
             setAllProducts(data);
         })
         .catch((error) => {

@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import Navbar from '../Components/Navbar';
 import { Link } from 'react-router';
 import toast from 'react-hot-toast';
+import { AuthContext } from '../Context/AuthContext';
 
 const AddProduct = () => {
-    const [loading, setLoading] = useState(false);
+    const { user } = useContext(AuthContext);
 
 
     const handleSubmit = (e) => {
@@ -12,7 +13,6 @@ const AddProduct = () => {
         const form = e.target;
         const formData = new FormData(form);
         const addProduct = Object.fromEntries(formData.entries());
-        setLoading(true);
 
         // add product into the database 
         fetch(`${import.meta.env.VITE_server}/add-product`, {
@@ -24,15 +24,15 @@ const AddProduct = () => {
         })
             .then(res => res.json())
             .then(data => {
+                console.log(data.insertedId);
                 if (data.insertedId) {
                     toast.success("Product Added Successfully");
-                    setLoading(false);
                     form.reset();
                 }
             })
             .catch(() => {
                 toast.error("Product Added Failed");
-                setLoading(false);
+                console.log("error");
             })
 
     }
@@ -78,7 +78,7 @@ const AddProduct = () => {
                             <div>
                                 <label className="font-medium">Category:</label>
                                 <select name="category" className="w-full input input-bordered" required>
-                                    <option disabled>Select</option>
+                                    <option value="select" disabled>Select</option>
                                     <option value="Electronics & Gadgets">Electronics & Gadgets</option>
                                     <option value="Home & Kitchen Appliances">Home & Kitchen Appliances</option>
                                     <option value="Fashion & Apparel">Fashion & Apparel</option>
@@ -104,8 +104,16 @@ const AddProduct = () => {
                                 <label className="font-medium">Minimum Selling Quantity:</label>
                                 <input name="minimum_selling_quantity" type="number" className="w-full input input-bordered" required />
                             </div>
-                            <button disabled={!loading} type="submit" className="bg-[#FA6C48] text-white py-2 px-4 rounded hover:bg-white hover:text-[#FA6C48] hover:border hover:border-[#FA6C48] duration-150  cursor-pointer">
-                                {loading ? 'Adding...' : 'Add'}
+                            <div>
+                                <label className="font-medium">User Name:</label>
+                                <input name="user_name" type="text" className="w-full input input-bordered" readOnly defaultValue={user.displayName} />
+                            </div>
+                            <div>
+                                <label className="font-medium">User Email:</label>
+                                <input name="user_email" type="text" className="w-full input input-bordered" readOnly defaultValue={user.email} />
+                            </div>
+                            <button type="submit" className="bg-[#FA6C48] text-white py-2 px-4 rounded hover:bg-white hover:text-[#FA6C48] hover:border hover:border-[#FA6C48] duration-150  cursor-pointer">
+                                Add
                             </button>
                         </form>
                     </div>
