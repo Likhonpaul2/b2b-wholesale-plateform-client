@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Navbar from '../Components/Navbar';
+import Navbar2 from '../Components/Navbar2';
 import Card from '../Components/Card';
 
 const AllProduct = () => {
@@ -21,7 +21,7 @@ const AllProduct = () => {
     return (
         <div>
             <header>
-                <Navbar/>
+                <Navbar2/>
             </header>
             <main>
                 <div className='grid lg:grid-cols-5 md:grid-cols-3 grid-cols-1 container mx-auto space-y-10 my-20'>

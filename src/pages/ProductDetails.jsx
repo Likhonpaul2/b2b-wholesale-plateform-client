@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import Navbar from '../Components/Navbar';
+import Navbar2 from '../Components/Navbar2';
 import { Link, useParams, useNavigate } from 'react-router';
 import Rating from 'react-rating';
 import { FaRegStar, FaStar } from 'react-icons/fa';
@@ -81,7 +81,7 @@ const ProductDetails = () => {
   return (
     <div>
       <header>
-        <Navbar />
+        <Navbar2 />
       </header>
 
       <main>

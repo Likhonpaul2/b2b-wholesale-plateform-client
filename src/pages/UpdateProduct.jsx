@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Navbar from '../Components/Navbar';
+import Navbar2 from '../Components/Navbar2';
 import { Link, useNavigate, useParams } from 'react-router';
 import { AuthContext } from '../Context/AuthContext';
 import toast from 'react-hot-toast';
@@ -54,7 +54,7 @@ const UpdateProduct = () => {
     return (
         <div>
             <header>
-                <Navbar />
+                <Navbar2 />
             </header>
             <main>
                 <div className='container mx-auto'>

@@ -11,6 +11,7 @@ import Register from "../pages/Register";
 import PrivateRoutes from "./PrivateRoutes";
 import ProductDetails from "../pages/ProductDetails";
 import UpdateProduct from "../pages/UpdateProduct";
+import ProductCategorize from "../pages/ProductCategorize";
 
 
 export const router = createBrowserRouter([
@@ -28,6 +29,10 @@ export const router = createBrowserRouter([
   {
     path: "/categories",
     element: <Categorizes />
+  },
+  {
+    path: "/product-categories/:category",
+    element: <ProductCategorize/>
   },
   {
     path: "/all-products",

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import Navbar from '../Components/Navbar';
+import Navbar2 from '../Components/Navbar2';
 import { FaGoogle } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../Context/AuthContext';
@@ -47,7 +47,7 @@ const Login = () => {
     return (
         <div>
             <header>
-                <Navbar />
+                <Navbar2 />
             </header>
             <main className='min-h-screen'>
                 <div className='container mx-auto flex items-center justify-center py-45 space-x-30'>
