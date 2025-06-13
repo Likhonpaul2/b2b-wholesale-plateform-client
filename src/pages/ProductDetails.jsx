@@ -44,36 +44,48 @@ const ProductDetails = () => {
       return toast.error(`Minimum order: ${productDetails.minimum_selling_quantity} pcs`);
     }
 
-    // const order = {
-    //   productId: productDetails._id,
-    //   buyerEmail: user.email,
-    //   buyerName: user.displayName,
-    //   quantity: buyQuantity
-    // };
+    const order = {
+      productId: productDetails._id,
+      buyerEmail: user.email,
+      buyerName: user.displayName,
+      quantity: buyQuantity
+    };
 
-    // try {
-    //   const addCart = await fetch(`${import.meta.env.VITE_server}/cart`, {
-    //     method: 'POST',
-    //     headers: { 'Content-Type': 'application/json' },
-    //     body: JSON.stringify(order)
-    //   });
+    fetch(`${import.meta.env.VITE_server}/add-product-cart`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(order)
+    })
+      .then((res) => res.json())
+      .then(data => {
+        if (data.insertedId) {
+          toast.success('Add to cart Successfully!');
+        } else {
+          toast.error("Add to cart unsuccessfully")
+        }
+      })
+      .catch(() => {
 
-    //   if (!addCart.ok) throw new Error('Cart insert failed.');
+      })
 
-    //   const updateStock = await fetch(`${import.meta.env.VITE_server}/all-products/${id}/decrease`, {
-    //     method: 'PATCH',
-    //     headers: { 'Content-Type': 'application/json' },
-    //     body: JSON.stringify({ quantity: buyQuantity })
-    //   });
+    const updateQuantity = productDetails.main_quantity - buyQuantity;
 
-    //   if (!updateStock.ok) throw new Error('Stock update failed.');
-
-    //   toast.success('Added to cart successfully!');
-    //   document.getElementById('my_modal_3').close();
-    // } catch (err) {
-    //   console.error(err);
-    //   toast.error('Something went wrong!');
-    // }
+    fetch(`${import.meta.env.VITE_server}/update-main-quantity/${id}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ main_quantity: updateQuantity })
+    })
+      .then(res => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.modifiedCount > 0) {
+          document.getElementById('my_modal_3').close();
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        toast.error('Something went wrong!');
+      });
   };
 
   if (!productDetails) return <Spinner />;
@@ -86,7 +98,7 @@ const ProductDetails = () => {
 
       <main>
         <div className='container mx-auto'>
-          {/* Breadcrumbs */}
+          {/* Breadcrumbs form daisy UI */}
           <div className='p-5 border-b border-gray-300'>
             <div className="breadcrumbs text-sm">
               <ul>
@@ -97,14 +109,14 @@ const ProductDetails = () => {
             </div>
           </div>
 
-          {/* Product details */}
+          {/* product  */}
           <div className='grid grid-cols-1 md:grid-cols-2 my-20'>
             {/* Image */}
             <div className='mt-10 flex justify-center items-center'>
               <img src={productDetails.image} alt={productDetails.name} />
             </div>
 
-            {/* Info */}
+            {/* details */}
             <div className='p-5'>
               <div className='py-5 border-b border-gray-300'>
                 <h2 className='text-4xl font-semibold'>{productDetails.name}</h2>
@@ -130,13 +142,13 @@ const ProductDetails = () => {
                 <p className='font-bold'>Available: {productDetails.main_quantity} pcs</p>
               </div>
 
-              {/* Buy Modal */}
+              {/* buy modal */}
               <dialog id="my_modal_3" className="modal">
                 <div className="modal-box rounded-none">
                   <form method="dialog">
                     <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 cursor-pointer">✕</button>
                   </form>
-                  <h3 className="text-lg font-semibold mb-3">Checkout</h3>
+                  <h3 className="text-3xl font-semibold mb-3 text-[#FA6C48]">Checkout</h3>
                   <p><strong>Name:</strong> {user?.displayName}</p>
                   <p><strong>Email:</strong> {user?.email}</p>
                   <p><strong>Product:</strong> {productDetails.name}</p>

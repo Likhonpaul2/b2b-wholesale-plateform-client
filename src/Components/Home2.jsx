@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import Slider from './Slider';
 
 const Home2 = () => {
   return (
@@ -46,6 +47,16 @@ const Home2 = () => {
         </div>
       </section>
 
+      {/* slider Section */}
+      <section className="py-16 bg-white">
+        {/* <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold mb-4">Why Choose Us?</h2>
+          <p className="text-lg mb-6 max-w-2xl mx-auto">
+            We connect B2B buyers with trusted wholesale suppliers. Our platform ensures seamless transactions, secure data, and a wide variety of categories for every business need.
+          </p>
+        </div> */}
+        <Slider/>
+      </section>
       {/* About Section */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4 text-center">

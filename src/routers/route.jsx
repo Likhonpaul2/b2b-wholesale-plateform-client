@@ -12,6 +12,7 @@ import PrivateRoutes from "./PrivateRoutes";
 import ProductDetails from "../pages/ProductDetails";
 import UpdateProduct from "../pages/UpdateProduct";
 import ProductCategorize from "../pages/ProductCategorize";
+import Cart from "../pages/Cart";
 
 
 export const router = createBrowserRouter([
@@ -33,6 +34,10 @@ export const router = createBrowserRouter([
   {
     path: "/product-categories/:category",
     element: <ProductCategorize/>
+  },
+  {
+    path: "/cart",
+    element: <PrivateRoutes><Cart/></PrivateRoutes>
   },
   {
     path: "/all-products",

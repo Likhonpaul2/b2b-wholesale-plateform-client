@@ -28,7 +28,7 @@ const Slider = () => {
                         <div className="text-white text-center px-4 space-y-6">
                             <p className="text-xl md:text-2xl font-medium">B2B WooCommerce MarketPlace</p>
                             <h2 className="text-4xl md:text-6xl font-bold">Sale Up to 30%</h2>
-                            <Link to="/">
+                            <Link to="/all-products">
                                 <button className="mt-4 px-8 py-3 bg-[#FA6C48] hover:bg-white hover:text-black transition font-bold uppercase  text-lg cursor-pointer">
                                     Explore Fresh
                                 </button>
@@ -67,7 +67,7 @@ const Slider = () => {
                         <div className="text-white px-4 space-y-6">
                             <h2 className="text-4xl md:text-6xl font-bold">Organic Vegies & Fruits</h2>
                             <p className="text-xl md:text-2xl font-medium">Big sale 39% when buying from the collection</p>
-                            <Link to="/">
+                            <Link to="/all-products">
                                 <button className="mt-4 px-8 py-3 bg-[#FA6C48] hover:bg-white hover:text-black transition font-bold uppercase  text-lg cursor-pointer">
                                     view more
                                 </button>
