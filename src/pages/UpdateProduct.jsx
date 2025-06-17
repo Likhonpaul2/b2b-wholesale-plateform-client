@@ -3,11 +3,16 @@ import Navbar2 from '../Components/Navbar2';
 import { Link, useNavigate, useParams } from 'react-router';
 import { AuthContext } from '../Context/AuthContext';
 import toast from 'react-hot-toast';
+import Footer from '../Components/Footer';
 
 const UpdateProduct = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const [updateProduct, setUpdateProduct] = useState("");
+
+    useEffect(() => {
+        document.title = "Update Product | B2B Wholesale Platform";
+    }, []);
 
 
     useEffect(() => {
@@ -25,6 +30,8 @@ const UpdateProduct = () => {
         const form = e.target;
         const formData = new FormData(form);
         const updateFromData = Object.fromEntries(formData.entries());
+
+
 
 
         // update data in DB 
@@ -127,16 +134,10 @@ const UpdateProduct = () => {
 
                 </div>
 
-
-
-
-
-
-
-
-
-
             </main>
+            <footer>
+                <Footer />
+            </footer>
         </div>
     );
 };

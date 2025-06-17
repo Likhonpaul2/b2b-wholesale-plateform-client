@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from '../Components/Navbar2';
 import Card from '../Components/Card';
+import Footer from '../Components/Footer';
 
 const Categorizes = () => {
     const [allProducts, setAllProducts] = useState([]);
     const [categories, setCategories] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState('');
+
+    useEffect(() => {
+        document.title = "Category | B2B Wholesale Platform";
+    }, []);
 
     useEffect(() => {
         fetch(`${import.meta.env.VITE_server}/all-products`)
@@ -29,7 +34,7 @@ const Categorizes = () => {
             <header>
                 <Navbar />
             </header>
-            <main className='container mx-auto my-10'>
+            <main className='container mx-auto my-10 min-h-screen'>
                 <h2 className='text-2xl font-bold text-center mb-6'>Browse by Category</h2>
 
                 <div className='flex flex-wrap justify-center gap-4 mb-8'>
@@ -44,9 +49,8 @@ const Categorizes = () => {
                             <button
                                 key={category}
                                 onClick={() => setSelectedCategory(category)}
-                                className={`px-4 py-2 border rounded-full ${
-                                    selectedCategory === category ? 'bg-orange-500 text-white' : 'bg-white text-gray-800 cursor-pointer'
-                                }`}
+                                className={`px-4 py-2 border rounded-full ${selectedCategory === category ? 'bg-orange-500 text-white' : 'bg-white text-gray-800 cursor-pointer'
+                                    }`}
                             >
                                 {category}
                             </button>
@@ -62,6 +66,9 @@ const Categorizes = () => {
                     }
                 </div>
             </main>
+            <footer>
+                <Footer />
+            </footer>
         </div>
     );
 };

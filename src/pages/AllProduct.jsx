@@ -2,12 +2,17 @@ import React, { useEffect, useState } from 'react';
 import Navbar2 from '../Components/Navbar2';
 import Card from '../Components/Card';
 import { Link } from 'react-router';
+import Footer from '../Components/Footer';
 
 const AllProduct = () => {
     const [allProducts, setAllProducts] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [showFiltered, setShowFiltered] = useState(false);
     const [view, setView] = useState('card');
+
+    useEffect(() => {
+        document.title = "All Products | B2B Wholesale Platform";
+    }, []);
 
     useEffect(() => {
         fetch(`${import.meta.env.VITE_server}/all-products`)
@@ -44,7 +49,7 @@ const AllProduct = () => {
                 <Navbar2 />
             </header>
 
-            <main className="container mx-auto my-10 px-4">
+            <main className="container mx-auto my-10 px-4 min-h-screen">
                 {/* Controls */}
                 <div className="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
                     {/* <button
@@ -55,7 +60,7 @@ const AllProduct = () => {
                     </button> */}
                     <div className='flex space-x-2'>
                         <h2>Available Products</h2>
-                        
+
                         <input onClick={handleFilterToggle} type="checkbox" defaultChecked className="toggle " />
                     </div>
 
@@ -118,6 +123,10 @@ const AllProduct = () => {
                     </div>
                 )}
             </main>
+
+            <footer>
+                <Footer />
+            </footer>
         </div>
     );
 };

@@ -2,10 +2,15 @@ import React, { useEffect, useState } from 'react';
 import Navbar from '../Components/Navbar2';
 import Card from '../Components/Card';
 import { useParams } from 'react-router';
+import Footer from '../Components/Footer';
 
 const ProductCategorize = () => {
     const [categories, setCategories] = useState([]);
     const { category } = useParams();
+
+    useEffect(() => {
+        document.title = "Product Category | B2B Wholesale Platform";
+    }, []);
 
 
     useEffect(() => {
@@ -32,6 +37,9 @@ const ProductCategorize = () => {
                 </div>
 
             </main>
+            <footer>
+                <Footer />
+            </footer>
         </div>
     );
 };

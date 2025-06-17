@@ -1,13 +1,18 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import Navbar2 from '../Components/Navbar2';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../Context/AuthContext';
 import toast from 'react-hot-toast';
+import Footer from '../Components/Footer';
 
 const Register = () => {
     const { CreateUserWithEmailAndPassword, UpdateUserPhotoAndName } = useContext(AuthContext);
     const location = useLocation();
     const navigate = useNavigate();
+
+    useEffect(() => {
+            document.title = "Register Page | B2B Wholesale Platform";
+        }, []);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -186,6 +191,9 @@ const Register = () => {
 
                 </div>
             </main>
+            <footer>
+                <Footer/>
+            </footer>
 
 
         </div>

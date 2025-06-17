@@ -4,10 +4,15 @@ import { AuthContext } from '../Context/AuthContext';
 import toast from 'react-hot-toast';
 import Card from '../Components/Card';
 import { Link } from 'react-router';
+import Footer from '../Components/Footer';
 
 const MyProduct = () => {
     const { user } = useContext(AuthContext);
     const [myProduct, setMyProduct] = useState([]);
+
+    useEffect(() => {
+        document.title = "My Product | B2B Wholesale Platform";
+    }, []);
 
 
     useEffect(() => {
@@ -38,7 +43,7 @@ const MyProduct = () => {
                 <Navbar2 />
             </header>
             <main>
-                <div className='container mx-auto'>
+                <div className='container mx-auto min-h-screen'>
                     {myProduct.length === 0 ? (
                         <div className="flex flex-col items-center justify-center min-h-[40vh]">
                             {/* Animated SVG illustration for no product available */}
@@ -155,6 +160,9 @@ const MyProduct = () => {
                     )}
                 </div>
             </main>
+            <footer>
+                <Footer />
+            </footer>
         </div>
     );
 };

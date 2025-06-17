@@ -2,10 +2,15 @@ import React, { useContext, useEffect, useState } from 'react';
 import Navbar from '../Components/Navbar2';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../Context/AuthContext';
+import Footer from '../Components/Footer';
 
 const Cart = () => {
     const { user } = useContext(AuthContext);
     const [cartItems, setCartItems] = useState([]);
+
+    useEffect(() => {
+        document.title = "Cart Items | B2B Wholesale Platform";
+    }, []);
 
 
     useEffect(() => {
@@ -60,7 +65,7 @@ const Cart = () => {
             <header>
                 <Navbar cartCount={cartItems.length} />
             </header>
-            <main className="container mx-auto px-4">
+            <main className="container mx-auto px-4 min-h-screen">
                 <div className='border-b border-gray-300'>
                     <h2 className='text-center text-3xl font-bold my-5'>Your Cart</h2>
                 </div>
@@ -89,6 +94,9 @@ const Cart = () => {
                     </div>
                 )}
             </main>
+            <footer>
+                <Footer />
+            </footer>
         </div>
     );
 }

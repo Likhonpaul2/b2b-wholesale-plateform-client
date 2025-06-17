@@ -1,11 +1,15 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import Navbar2 from '../Components/Navbar2';
 import { Link } from 'react-router';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../Context/AuthContext';
+import Footer from '../Components/Footer';
 
 const AddProduct = () => {
     const { user } = useContext(AuthContext);
+    useEffect(() => {
+        document.title = "Add Product | B2B Wholesale Platform";
+    }, []);
 
 
     const handleSubmit = (e) => {
@@ -121,17 +125,10 @@ const AddProduct = () => {
 
 
                 </div>
-
-
-
-
-
-
-
-
-
-
             </main>
+            <footer>
+                <Footer />
+            </footer>
         </div>
     );
 };

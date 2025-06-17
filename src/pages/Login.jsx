@@ -1,14 +1,19 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import Navbar2 from '../Components/Navbar2';
 import { FaGoogle } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../Context/AuthContext';
 import toast from 'react-hot-toast';
+import Footer from '../Components/Footer';
 
 const Login = () => {
     const { SignInWithGoogle, SignInEmailAndPass } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
+
+    useEffect(() => {
+        document.title = "Login Page | B2B Wholesale Platform";
+    }, []);
 
 
     // signIn with google 
@@ -43,7 +48,7 @@ const Login = () => {
             })
     }
 
-    
+
     return (
         <div>
             <header>
@@ -170,6 +175,10 @@ const Login = () => {
 
                 </div>
             </main>
+
+            <footer>
+                <Footer />
+            </footer>
 
 
         </div>

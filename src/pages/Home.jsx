@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Slider from '../Components/Slider';
 import Home2 from '../Components/home2';
-import Footer from '../Components/Footer';
+
 
 
 const Home = () => {
+    useEffect(() => {
+        document.title = "Home | B2B Wholesale Platform";
+    }, []);
     return (
         <div>
-            <Home2/>
-            <Footer/>
+            <Home2 />
+
         </div>
     );
 };

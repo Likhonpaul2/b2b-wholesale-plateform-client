@@ -6,6 +6,7 @@ import { FaRegStar, FaStar } from 'react-icons/fa';
 import { AuthContext } from '../Context/AuthContext';
 import Spinner from '../Components/Spinner';
 import toast from 'react-hot-toast';
+import Footer from '../Components/Footer';
 
 const ProductDetails = () => {
   const { user } = useContext(AuthContext);
@@ -13,6 +14,10 @@ const ProductDetails = () => {
   const navigate = useNavigate();
   const [productDetails, setProductDetails] = useState(null);
   const [buyQuantity, setBuyQuantity] = useState(1);
+
+  useEffect(() => {
+    document.title = "Product Details | B2B Wholesale Platform";
+  }, []);
 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_server}/all-products/${id}`)
@@ -65,7 +70,7 @@ const ProductDetails = () => {
       });
 
 
-      
+
     const order = {
       productId: productDetails._id,
       image: productDetails.image,
@@ -112,7 +117,7 @@ const ProductDetails = () => {
       </header>
 
       <main>
-        <div className='container mx-auto'>
+        <div className='container mx-auto min-h-screen'>
           {/* Breadcrumbs form daisy UI */}
           <div className='p-5 border-b border-gray-300'>
             <div className="breadcrumbs text-sm">
@@ -203,6 +208,9 @@ const ProductDetails = () => {
           </div>
         </div>
       </main>
+      <footer>
+        <Footer />
+      </footer>
     </div>
   );
 };
