@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../Context/AuthContext';
 import toast from 'react-hot-toast';
 import Footer from '../Components/Footer';
+import LoginImage from "../assets/img/login.png"
 
 const Login = () => {
     const { SignInWithGoogle, SignInEmailAndPass } = useContext(AuthContext);
@@ -59,7 +60,7 @@ const Login = () => {
 
                     {/* left div  */}
                     <div>
-                        <img src="/src/assets/img/login.png" alt="Login" className='w-120' />
+                        <img src={LoginImage} alt="Login" className='w-120' />
                     </div>
 
 

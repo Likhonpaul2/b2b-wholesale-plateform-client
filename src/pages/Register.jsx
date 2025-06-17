@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../Context/AuthContext';
 import toast from 'react-hot-toast';
 import Footer from '../Components/Footer';
+import RegisterImage from "../assets/img/register.png"
 
 const Register = () => {
     const { CreateUserWithEmailAndPassword, UpdateUserPhotoAndName } = useContext(AuthContext);
@@ -186,7 +187,7 @@ const Register = () => {
 
                     {/* right div  */}
                     <div>
-                        <img src="/src/assets/img/register.png" alt="Login" className='w-120' />
+                        <img src={RegisterImage} alt="Login" className='w-120' />
                     </div>
 
                 </div>

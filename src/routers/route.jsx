@@ -13,7 +13,7 @@ import ProductDetails from "../pages/ProductDetails";
 import UpdateProduct from "../pages/UpdateProduct";
 import ProductCategorize from "../pages/ProductCategorize";
 import Cart from "../pages/Cart";
-
+ 
 
 export const router = createBrowserRouter([
   {
