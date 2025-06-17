@@ -3,12 +3,12 @@ import { Link, NavLink } from 'react-router';
 import { AuthContext } from '../Context/AuthContext';
 import { FaShoppingCart } from 'react-icons/fa';
 
-const Navbar = () => {
+const Navbar = ({ cartCount }) => {
     const { user, SignOut } = useContext(AuthContext);
     const [isOpen, setIsOpen] = useState(false);
 
     // Replace 3 with dynamic cart count if using CartContext or Redux
-    const cartItemCount = 3;
+    // const cartItemCount = 3;
 
     const handleLogout = () => {
         SignOut()
@@ -89,7 +89,7 @@ const Navbar = () => {
                     <Link to="/cart" className="relative text-gray-700 hover:text-orange-500">
                         <FaShoppingCart className="text-2xl" />
                         <span className="absolute -top-2 -right-2 bg-orange-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
-                            {cartItemCount}
+                            {cartCount}
                         </span>
                     </Link>
 
@@ -143,7 +143,7 @@ const Navbar = () => {
                     {/* Mobile Cart */}
                     <Link to="/cart" className="flex items-center space-x-2 text-gray-700 hover:text-orange-500 my-4">
                         <FaShoppingCart className="text-xl" />
-                        <span>Cart ({cartItemCount})</span>
+                        <span>Cart ({cartCount})</span>
                     </Link>
 
                     {/* Mobile User Auth */}

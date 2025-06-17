@@ -49,13 +49,7 @@ const Home2 = () => {
 
       {/* slider Section */}
       <section className="py-16 bg-white">
-        {/* <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4">Why Choose Us?</h2>
-          <p className="text-lg mb-6 max-w-2xl mx-auto">
-            We connect B2B buyers with trusted wholesale suppliers. Our platform ensures seamless transactions, secure data, and a wide variety of categories for every business need.
-          </p>
-        </div> */}
-        <Slider/>
+        <Slider />
       </section>
       {/* About Section */}
       <section className="py-16 bg-white">
@@ -67,7 +61,26 @@ const Home2 = () => {
         </div>
       </section>
 
-
+      {/* New Testimonials Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold mb-8">What Our Clients Say</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-white rounded-lg shadow p-6">
+              <p className="italic mb-4">"This platform made sourcing products so much easier for our business!"</p>
+              <span className="font-semibold text-orange-500">— Alex, Retailer</span>
+            </div>
+            <div className="bg-white rounded-lg shadow p-6">
+              <p className="italic mb-4">"Reliable suppliers and fast communication. Highly recommended."</p>
+              <span className="font-semibold text-orange-500">— Priya, Distributor</span>
+            </div>
+            <div className="bg-white rounded-lg shadow p-6">
+              <p className="italic mb-4">"A wide variety of products and excellent customer support."</p>
+              <span className="font-semibold text-orange-500">— John, Wholesaler</span>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };

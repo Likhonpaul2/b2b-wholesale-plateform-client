@@ -44,29 +44,6 @@ const ProductDetails = () => {
       return toast.error(`Minimum order: ${productDetails.minimum_selling_quantity} pcs`);
     }
 
-    const order = {
-      productId: productDetails._id,
-      buyerEmail: user.email,
-      buyerName: user.displayName,
-      quantity: buyQuantity
-    };
-
-    fetch(`${import.meta.env.VITE_server}/add-product-cart`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(order)
-    })
-      .then((res) => res.json())
-      .then(data => {
-        if (data.insertedId) {
-          toast.success('Add to cart Successfully!');
-        } else {
-          toast.error("Add to cart unsuccessfully")
-        }
-      })
-      .catch(() => {
-
-      })
 
     const updateQuantity = productDetails.main_quantity - buyQuantity;
 
@@ -86,6 +63,44 @@ const ProductDetails = () => {
         console.error(err);
         toast.error('Something went wrong!');
       });
+
+
+      
+    const order = {
+      productId: productDetails._id,
+      image: productDetails.image,
+      name: productDetails.name,
+      brand: productDetails.brand,
+      category: productDetails.category,
+      main_quantity: productDetails.main_quantity,
+      minimum_selling_quantity: productDetails.minimum_selling_quantity,
+      price: productDetails.price,
+      rating: productDetails.rating,
+      description: productDetails.description,
+      buyerEmail: user.email,
+      buyerName: user.displayName,
+      quantity: buyQuantity,
+      buying_date: new Date().toISOString().split('T')[0] // Only date in YYYY-MM-DD format
+    };
+
+    fetch(`${import.meta.env.VITE_server}/add-product-cart`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(order)
+    })
+      .then((res) => res.json())
+      .then(data => {
+        if (data.insertedId) {
+          toast.success('Add to cart Successfully!');
+        } else {
+          toast.error("Add to cart unsuccessfully")
+        }
+      })
+      .catch(() => {
+
+      })
+
+
   };
 
   if (!productDetails) return <Spinner />;
