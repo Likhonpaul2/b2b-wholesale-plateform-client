@@ -1,6 +1,6 @@
 # B2B Wholesale Platform
 
-This project is a B2B wholesale platform designed to connect businesses with suppliers and streamline the wholesale purchasing process. It provides features for product listing, order management, user authentication, and secure transactions. The platform aims to simplify bulk buying, improve supplier visibility, and enhance business-to-business interactions.
+A B2B wholesale platform designed to connect businesses with suppliers and streamline the wholesale purchasing process. The platform offers product listing, order management, user authentication, and secure transactions to simplify bulk buying and enhance business-to-business interactions.
 
 ## Features
 
@@ -11,20 +11,49 @@ This project is a B2B wholesale platform designed to connect businesses with sup
 - Secure payment integration
 - Admin panel for managing users and products
 
-## Technologies Used
+## Technologies & Packages Used
 
-- Frontend: React.js, Tailwind CSS
-- Backend: Node.js, Express.js
-- Database: MongoDB
-- Authentication: JWT
+### Frontend
+
+- [React.js](https://reactjs.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [react-router-dom](https://www.npmjs.com/package/react-router-dom)
+- [axios](https://www.npmjs.com/package/axios)
+- [react-hook-form](https://www.npmjs.com/package/react-hook-form)
+- [react-toastify](https://www.npmjs.com/package/react-toastify)
+- [jwt-decode](https://www.npmjs.com/package/jwt-decode)
+
+### Backend
+
+- [Node.js](https://nodejs.org/)
+- [Express.js](https://expressjs.com/)
+- [cors](https://www.npmjs.com/package/cors)
+- [dotenv](https://www.npmjs.com/package/dotenv)
+- [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken)
+
+
+### Database
+
+- [MongoDB](https://www.mongodb.com/)
 
 ## Getting Started
 
-1. Clone the repository
-2. Install dependencies with `npm install`
-3. Configure environment variables
-4. Run the development server with `npm start`
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/your-username/B2B-wholesale-platform.git
+    ```
+2. Install dependencies for both frontend and backend:
+    ```bash
+    cd B2B-wholesale-platform
+    npm install
+    cd client
+    npm install
+    ```
+3. Configure environment variables as needed.
+4. Run the development servers:
+    - Backend: `npm start`
+    - Frontend: `cd client && npm start`
 
-## License
 
-This project is licensed under the MIT License.
+
+
