@@ -3,7 +3,7 @@
 A B2B wholesale platform designed to connect businesses with suppliers and streamline the wholesale purchasing process. The platform offers product listing, order management, user authentication, and secure transactions to simplify bulk buying and enhance business-to-business interactions.
 
 ## Features
-
+- [Live Demo](https://b2b-wholesale-marketplace.web.app)
 - User registration and authentication
 - Supplier and buyer dashboards
 - Product catalog with search and filter options
