@@ -22,8 +22,11 @@ A B2B wholesale platform designed to connect businesses with suppliers and strea
 - [react-hook-form](https://www.npmjs.com/package/react-hook-form)
 - [react-toastify](https://www.npmjs.com/package/react-toastify)
 - [jwt-decode](https://www.npmjs.com/package/jwt-decode)
+<<<<<<< HEAD
 - [@headlessui/react](https://www.npmjs.com/package/@headlessui/react)
 - [@heroicons/react](https://www.npmjs.com/package/@heroicons/react)
+=======
+>>>>>>> 04047661ac74cd64348c9616cb3059e4800ad5a8
 
 ### Backend
 
@@ -32,10 +35,14 @@ A B2B wholesale platform designed to connect businesses with suppliers and strea
 - [cors](https://www.npmjs.com/package/cors)
 - [dotenv](https://www.npmjs.com/package/dotenv)
 - [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken)
+<<<<<<< HEAD
 - [bcryptjs](https://www.npmjs.com/package/bcryptjs)
 - [mongoose](https://www.npmjs.com/package/mongoose)
 - [morgan](https://www.npmjs.com/package/morgan)
 - [cookie-parser](https://www.npmjs.com/package/cookie-parser)
+=======
+
+>>>>>>> 04047661ac74cd64348c9616cb3059e4800ad5a8
 
 ### Database
 
@@ -58,7 +65,10 @@ A B2B wholesale platform designed to connect businesses with suppliers and strea
 4. Run the development servers:
     - Backend: `npm start`
     - Frontend: `cd client && npm start`
+<<<<<<< HEAD
+=======
 
-## License
 
-This project is licensed under the MIT License.
+>>>>>>> 04047661ac74cd64348c9616cb3059e4800ad5a8
+
+
