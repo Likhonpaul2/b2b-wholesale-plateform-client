@@ -12,6 +12,9 @@ const Navbar = () => {
     const handleDarkMode = () => {
         setDarkMode(!darkMode);
     }
+    const handleCartWindow =()=>{
+        window.scrollTo(0,0);
+    }
 
 
     const handleLogout = () => {
@@ -69,8 +72,8 @@ const Navbar = () => {
 
 
     return (
-        <div className="border-b border-gray-300">
-            <div className="navbar container mx-auto">
+        <div className="border-b border-gray-300 ">
+            <div className="navbar container mx-auto ">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -90,12 +93,12 @@ const Navbar = () => {
 
                 </div>
                 <div className="navbar-end space-x-5">
-                    <FaShoppingCart size={25} className='cursor-pointer' />
+                    <FaShoppingCart size={25} className='cursor-pointer' onClick={handleCartWindow}/>
                     {user ? (
                         <>
                             <div className="group relative cursor-pointer">
                                 <img
-                                    src={user?.photoURL}
+                                    src={user?.photoURL || "https://i.ibb.co/JwqV6zYJ/0667f41f-22f7-455f-9b72-13bf41523a18-1.jpg"}
                                     alt="User"
                                     className="w-10 h-10 rounded-full border-2 border-white"
                                 />

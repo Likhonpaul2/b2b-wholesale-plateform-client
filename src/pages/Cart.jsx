@@ -10,6 +10,7 @@ const Cart = () => {
 
     useEffect(() => {
         document.title = "Cart Items | B2B Wholesale Platform";
+        window.scrollTo(0,0);
     }, []);
 
 
