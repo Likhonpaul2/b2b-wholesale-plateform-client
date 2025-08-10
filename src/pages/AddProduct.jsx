@@ -47,85 +47,73 @@ const AddProduct = () => {
             <header>
                 <Navbar2 />
             </header>
-            <main>
-                <div className='container mx-auto'>
+            <main className="bg-gray-50 min-h-screen">
+                <div className="container mx-auto px-4 py-8">
 
-
-                    {/* Breadcrumbs */}
-                    <div className='p-5 border-b border-gray-300'>
-                        <div className="breadcrumbs text-sm">
-                            <ul>
-                                <li><Link to="/">Home</Link></li>
-                                <li>Add Product</li>
-                            </ul>
-                        </div>
+                    {/* Breadcrumb */}
+                    <div className="flex items-center text-sm text-gray-500 mb-6">
+                        <Link to="/" className="flex items-center hover:text-orange-500">
+                            <span className="material-icons text-sm mr-1"></span> Home
+                        </Link>
+                        <span className="mx-2">/</span>
+                        <span className="text-orange-500">Add Product</span>
                     </div>
 
-                    {/* update form  */}
-                    <div>
-                        <h1 className="text-3xl font-bold my-6 text-center ">Add New Product</h1>
-                        <form
-                            onSubmit={handleSubmit}
-                            className="grid gap-4 max-w-xl mx-auto bg-white p-6 shadow mb-10">
-                            <div>
-                                <label className="font-medium">Image URL:</label>
-                                <input name="image" type="text" className="w-full input input-bordered" required />
-                            </div>
-                            <div>
-                                <label className="font-medium">Name:</label>
-                                <input name="name" type="text" className="w-full input input-bordered" required />
-                            </div>
-                            <div>
-                                <label className="font-medium">Brand:</label>
-                                <input name="brand" type="text" className="w-full input input-bordered" required />
-                            </div>
-                            <div>
-                                <label className="font-medium">Category:</label>
-                                <select name="category" className="w-full input input-bordered" required>
-                                    <option value="select" disabled>Select</option>
-                                    <option value="Electronics & Gadgets">Electronics & Gadgets</option>
-                                    <option value="Home & Kitchen Appliances">Home & Kitchen Appliances</option>
-                                    <option value="Fashion & Apparel">Fashion & Apparel</option>
-                                    <option value="Industrial Machinery & Tools">Industrial Machinery & Tools</option>
-                                    <option value="Health & Beauty">Health & Beauty</option>
-                                    <option value="Automotive Parts & Accessories">Automotive Parts & Accessories</option>
-                                    <option value="Office Supplies & Stationery">Office Supplies & Stationery</option>
+                    {/* Title */}
+                    <div className="text-center mb-8">
+                        <h1 className="text-3xl font-bold text-gray-800">Add New Product</h1>
+                        <p className="text-gray-500">Fill out the form below to add a product to your catalog.</p>
+                    </div>
+
+                    {/* Form */}
+                    <form
+                        onSubmit={handleSubmit}
+                        className="bg-white rounded-2xl shadow-lg p-8 grid gap-6 max-w-3xl mx-auto"
+                    >
+                        {/* Product Info Section */}
+                        <div>
+                            <h2 className="text-lg font-semibold text-gray-700 mb-3">📦 Product Info</h2>
+                            <div className="grid md:grid-cols-2 gap-4">
+                                <input name="image" placeholder="Image URL" className="input input-bordered w-full" required />
+                                <input name="name" placeholder="Product Name" className="input input-bordered w-full" required />
+                                <input name="brand" placeholder="Brand" className="input input-bordered w-full" required />
+                                <select name="category" className="select select-bordered w-full" required>
+                                    <option disabled>Select Category</option>
+                                    <option>Electronics & Gadgets</option>
+                                    <option>Home & Kitchen Appliances</option>
+                                    <option>Fashion & Apparel</option>
+                                    <option>Industrial Machinery & Tools</option>
+                                    <option>Health & Beauty</option>
+                                    <option>Automotive Parts & Accessories</option>
+                                    <option>Office Supplies & Stationery</option>
                                 </select>
+                                <input name="rating" type="number" step="0.1" min="1" max="5" placeholder="Rating (1-5)" className="input input-bordered w-full" required />
+                                <input name="main_quantity" type="number" placeholder="Main Quantity" className="input input-bordered w-full" required />
+                                <input name="minimum_selling_quantity" type="number" placeholder="Min Selling Qty" className="input input-bordered w-full" required />
                             </div>
-                            <div>
-                                <label className="font-medium">Rating (1-5):</label>
-                                <input name="rating" type="number" step="0.1" min="1" max="5" className="w-full input input-bordered" required />
-                            </div>
-                            <div>
-                                <label className="font-medium">Description:</label>
-                                <textarea name="description" className="w-full textarea textarea-bordered" required />
-                            </div>
-                            <div>
-                                <label className="font-medium">Main Quantity:</label>
-                                <input name="main_quantity" type="number" className="w-full input input-bordered" required />
-                            </div>
-                            <div>
-                                <label className="font-medium">Minimum Selling Quantity:</label>
-                                <input name="minimum_selling_quantity" type="number" className="w-full input input-bordered" required />
-                            </div>
-                            <div>
-                                <label className="font-medium">User Name:</label>
-                                <input name="user_name" type="text" className="w-full input input-bordered" readOnly defaultValue={user.displayName} />
-                            </div>
-                            <div>
-                                <label className="font-medium">User Email:</label>
-                                <input name="user_email" type="text" className="w-full input input-bordered" readOnly defaultValue={user.email} />
-                            </div>
-                            <button type="submit" className="bg-[#FA6C48] text-white py-2 px-4 rounded hover:bg-white hover:text-[#FA6C48] hover:border hover:border-[#FA6C48] duration-150  cursor-pointer">
-                                Add
-                            </button>
-                        </form>
-                    </div>
+                            <textarea name="description" placeholder="Description" className="textarea textarea-bordered w-full mt-4" required />
+                        </div>
 
+                        {/* User Info Section */}
+                        <div>
+                            <h2 className="text-lg font-semibold text-gray-700 mb-3">👤 User Info</h2>
+                            <div className="grid md:grid-cols-2 gap-4">
+                                <input name="user_name" type="text" defaultValue={user.displayName} readOnly className="input input-bordered w-full bg-gray-100" />
+                                <input name="user_email" type="email" defaultValue={user.email} readOnly className="input input-bordered w-full bg-gray-100" />
+                            </div>
+                        </div>
 
-
+                        {/* Submit Button */}
+                        <button
+                            type="submit"
+                            className="bg-gradient-to-r from-orange-500 to-red-500 text-white py-3 rounded-lg font-medium hover:scale-105 transition-transform"
+                        >
+                            Add Product
+                        </button>
+                    </form>
                 </div>
             </main>
+
             <footer>
                 <Footer />
             </footer>

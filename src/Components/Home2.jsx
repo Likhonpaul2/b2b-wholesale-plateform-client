@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router'; // fixed react-router import
 import Slider from './Slider';
 import Spinner from './Spinner';
+import BG_banner from "../assets/img/Banner.jpg"
 
 const Home2 = () => {
   const [loading, setLoading] = useState(true);
@@ -20,8 +21,15 @@ const Home2 = () => {
   return (
     <>
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-orange-400 to-red-500 text-white py-20">
-        <section className="container mx-auto px-4 text-center">
+      <div
+        className="text-white py-20"
+        style={{
+          backgroundImage: `url(${BG_banner})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
+        <section className="container mx-auto px-4 py-20 text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-4">
             Welcome to B2B Wholesale Platform
           </h1>
@@ -29,7 +37,7 @@ const Home2 = () => {
             Discover and manage wholesale products across multiple industries. Streamlined. Fast. Reliable.
           </p>
           <Link to="/all-products">
-            <button className="bg-white text-orange-500 font-semibold py-2 px-6 rounded hover:bg-orange-100 transition cursor-pointer">
+            <button className="bg-white text-orange-500 font-semibold py-2 px-6 rounded hover:bg-orange-500 hover:text-white duration-300 transition cursor-pointer">
               Browse Products
             </button>
           </Link>
