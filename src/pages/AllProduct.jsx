@@ -9,6 +9,7 @@ const AllProduct = () => {
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [showFiltered, setShowFiltered] = useState(false);
     const [view, setView] = useState('card');
+    const [sortOrder, setSortOrder] = useState('');
 
     useEffect(() => {
         document.title = "All Products | B2B Wholesale Platform";
@@ -43,6 +44,18 @@ const AllProduct = () => {
         setView(e.target.value);
     };
 
+    const handleSortChange = (e) => {
+        const order = e.target.value;
+        setSortOrder(order);
+        let sortedProducts = [...filteredProducts];
+        if (order === 'asc') {
+            sortedProducts.sort((a, b) => a.price - b.price);
+        } else if (order === 'desc') {
+            sortedProducts.sort((a, b) => b.price - a.price);
+        }
+        setFilteredProducts(sortedProducts);
+    };
+
     return (
         <div>
             <header>
@@ -50,38 +63,47 @@ const AllProduct = () => {
             </header>
 
             <main className="container mx-auto my-10 px-4 min-h-screen">
-                {/* Controls */}
                 <div className="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
-                    {/* <button
-                        onClick={handleFilterToggle}
-                        className={`px-4 py-2 rounded text-white ${showFiltered ? 'bg-green-600 hover:bg-green-700' : 'bg-blue-500 hover:bg-blue-600'}`}
-                    >
-                        {showFiltered ? "Show All Products" : "Show Available Products"}
-                    </button> */}
-                    <div className='flex space-x-2'>
-                        <h2>Available Products</h2>
-
-                        <input onClick={handleFilterToggle} type="checkbox" defaultChecked className="toggle " />
+                    <div className='flex items-center space-x-2'>
+                        <h2 className="font-semibold">Available Products</h2>
+                        <input
+                            onClick={handleFilterToggle}
+                            type="checkbox"
+                            defaultChecked
+                            className="toggle"
+                        />
                     </div>
 
-                    <select
-                        value={view}
-                        onChange={handleViewChange}
-                        className="border px-3 py-2 rounded"
-                    >
-                        <option value="card">Card View</option>
-                        <option value="table">Table View</option>
-                    </select>
+                    <div className="flex gap-3">
+                        <select
+                            value={sortOrder}
+                            onChange={handleSortChange}
+                            className="border px-3 py-2 rounded"
+                        >
+                            <option value="">Sort by Price</option>
+                            <option value="asc">Low to High</option>
+                            <option value="desc">High to Low</option>
+                        </select>
+
+                        <select
+                            value={view}
+                            onChange={handleViewChange}
+                            className="border px-3 py-2 rounded"
+                        >
+                            <option value="card">Card View</option>
+                            <option value="table">Table View</option>
+                        </select>
+                    </div>
                 </div>
+
                 {view === 'card' && (
-                    <div className='grid lg:grid-cols-5 md:grid-cols-3 grid-cols-1 gap-6'>
+                    <div className='grid lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6'>
                         {filteredProducts.map(product => (
                             <Card product={product} key={product._id} />
                         ))}
                     </div>
                 )}
 
-                {/* Table View */}
                 {view === 'table' && (
                     <div className="overflow-x-auto mt-6">
                         <table className="w-full border-collapse">
