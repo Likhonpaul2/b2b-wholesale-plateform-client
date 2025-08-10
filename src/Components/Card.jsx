@@ -4,63 +4,78 @@ import { FaRegStar, FaStar } from 'react-icons/fa';
 import Rating from 'react-rating';
 import { Link } from 'react-router';
 
+const Card = ({ product, myProduct, setMyProduct }) => {
+  const { _id, name, rating, price, image, user_email } = product;
 
+  const handleDelete = (_id) => {
+    fetch(`${import.meta.env.VITE_server}/my-product/delete/${_id}`, {
+      method: 'DELETE',
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.deletedCount > 0) {
+          toast.success('Product deleted successfully');
+          setMyProduct(myProduct.filter((product) => product._id !== _id));
+        } else {
+          toast.error('Failed to delete product');
+        }
+      });
+  };
 
+  return (
+    <div className="flex flex-col border border-gray-200 rounded-2xl shadow-sm hover:shadow-lg hover:border-[#FA6C48] transition duration-300 w-full max-w-[260px] sm:max-w-[300px] bg-white">
+      {/* Image */}
+      <div className="flex justify-center items-center p-4">
+        <img
+          src={image}
+          alt={name}
+          className="max-h-48 w-auto object-contain rounded-lg"
+        />
+      </div>
 
-const Card = ({ product,myProduct,setMyProduct}) => {
-    const { _id, name, rating, price, image, user_email } = product;
+      {/* Content */}
+      <div className="px-4 pb-4 border-t border-gray-200 flex flex-col flex-1">
+        <h2 className="font-semibold text-lg sm:text-xl line-clamp-2">{name}</h2>
 
-    const handleDelete = (_id) => {
-        fetch(`${import.meta.env.VITE_server}/my-product/delete/${_id}`, {
-            method: "DELETE"
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.deletedCount > 0) {
-                    toast.success('Group deleted successfully');
-                    setMyProduct(myProduct.filter(product => product._id !== _id));
-                } else {
-                    toast.error('Failed to delete group');
-                }
-            })
-
-    }
-
-    return (
-        <div className={`w-[210px] ${user_email ? "h-[430px]" : "h-[400px]"} border border-gray-300 hover:border-[#FA6C48] duration-200 hover:shadow-md`}>
-            <div className='flex justify-center items-center'>
-                <img src={image} alt="" className='w-[170px] h-auto py-[20px]' />
-            </div>
-            <div className='p-[20px] border-t border-gray-300'>
-                <h2 className='font-semibold text-[15px]'>{name.length > 20 ? name.slice(0, 20) + '...' : name}</h2>
-                {/* react rating  */}
-                <Rating
-                    emptySymbol={<FaRegStar className="text-[#FA6C48]" />}
-                    fullSymbol={<FaStar className="text-[#FA6C48]" />}
-                    initialRating={rating}
-                    // onChange={(rate) => console.log(rate)}
-                    readonly
-                />
-                <h3 className='text-[17px] text-[#FA6C48] font-bold'>{price} <span>BDT</span></h3>
-
-                <Link to={`/all-products/${_id}`}>
-                    <button className='bg-[#FA6C48] text-white mt-5 w-full cursor-pointer hover:bg-white hover:text-[#FA6C48] duration-150 hover:border hover:border-[#FA6C48]'>View Details</button>
-                </Link>
-                <Link to={`/update-product/${_id}`}>
-                    <button className='bg-[#FA6C48] text-white mt-2 w-full cursor-pointer hover:bg-white hover:text-[#FA6C48] duration-150 hover:border hover:border-[#FA6C48]'>Update</button>
-                </Link>
-                {
-                    user_email &&
-                    <button
-                        onClick={() => handleDelete(_id)}
-                        className='bg-[#FA6C48] text-white mt-2 w-full cursor-pointer hover:bg-white hover:text-[#FA6C48] duration-150 hover:border hover:border-[#FA6C48]'>Delete</button>
-
-                }
-            </div>
+        {/* Rating */}
+        <div className="mt-1">
+          <Rating
+            emptySymbol={<FaRegStar className="text-[#FA6C48]" />}
+            fullSymbol={<FaStar className="text-[#FA6C48]" />}
+            initialRating={rating}
+            readonly
+          />
         </div>
-    );
+
+        {/* Price */}
+        <h3 className="text-xl text-[#FA6C48] font-bold mt-2">
+          {price} <span className="text-sm">BDT</span>
+        </h3>
+
+        {/* Buttons */}
+        <div className="mt-auto space-y-2">
+          <Link to={`/all-products/${_id}`}>
+            <button className="w-full py-2 bg-[#FA6C48] text-white font-medium rounded-lg hover:bg-white hover:text-[#FA6C48] border border-transparent hover:border-[#FA6C48] transition">
+              View Details
+            </button>
+          </Link>
+          <Link to={`/update-product/${_id}`}>
+            <button className="w-full py-2 mt-2 bg-[#FA6C48] text-white font-medium rounded-lg hover:bg-white hover:text-[#FA6C48] border border-transparent hover:border-[#FA6C48] transition">
+              Update
+            </button>
+          </Link>
+          {user_email && (
+            <button
+              onClick={() => handleDelete(_id)}
+              className="w-full py-2 bg-[#FA6C48] text-white font-medium rounded-lg hover:bg-white hover:text-[#FA6C48] border border-transparent hover:border-[#FA6C48] transition"
+            >
+              Delete
+            </button>
+          )}
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Card;
-
-
