@@ -1,7 +1,8 @@
 import React, { useContext, useState } from 'react';
 import { Link, NavLink } from 'react-router';
 import { AuthContext } from '../Context/AuthContext';
-import { FaShoppingCart } from 'react-icons/fa';
+import { FaMoon, FaShoppingCart } from 'react-icons/fa';
+import DarkModeToggle from '../Context/DarkModeToggler';
 
 const Navbar = ({ cartCount }) => {
     const { user, SignOut } = useContext(AuthContext);
@@ -49,7 +50,7 @@ const Navbar = ({ cartCount }) => {
                 </NavLink>
             </li>
 
-            
+
             {
                 user &&
                 <>
@@ -92,6 +93,10 @@ const Navbar = ({ cartCount }) => {
 
                 {/* Desktop Cart & User Actions */}
                 <div className="hidden md:flex items-center space-x-4">
+
+                    {/* desktop Darkmood */}
+                    <DarkModeToggle/>
+
                     {/* Cart Icon */}
                     <Link to="/cart" className="relative text-gray-700 hover:text-orange-500">
                         <FaShoppingCart className="text-2xl" />
@@ -146,6 +151,12 @@ const Navbar = ({ cartCount }) => {
             {isOpen && (
                 <div className="md:hidden px-4 pb-4">
                     <ul className="space-y-2 text-gray-700">{navLinks}</ul>
+
+
+                    {/* Mobile Darkmood */}
+                    <Link to="" className="flex items-center space-x-2 text-gray-700 hover:text-orange-500 my-4">
+                        <FaMoon className="text-xl" />
+                    </Link>
 
                     {/* Mobile Cart */}
                     <Link to="/cart" className="flex items-center space-x-2 text-gray-700 hover:text-orange-500 my-4">

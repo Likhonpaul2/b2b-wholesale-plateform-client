@@ -7,13 +7,16 @@ import AuthProvider from './Context/AuthProvider.jsx'
 import { Toaster } from 'react-hot-toast'
 import Modal from './Components/Modal.jsx'
 
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+
     <AuthProvider>
       {/* toast  */}
-      <Toaster/>
+      <Toaster />
 
       <RouterProvider router={router} />
     </AuthProvider>
+
   </StrictMode>,
 )
