@@ -13,7 +13,7 @@ import ProductDetails from "../pages/ProductDetails";
 import UpdateProduct from "../pages/UpdateProduct";
 import ProductCategorize from "../pages/ProductCategorize";
 import Cart from "../pages/Cart";
- 
+
 
 export const router = createBrowserRouter([
   {
@@ -33,15 +33,15 @@ export const router = createBrowserRouter([
   },
   {
     path: "/product-categories/:category",
-    element: <ProductCategorize/>
+    element: <ProductCategorize />
   },
   {
     path: "/cart",
-    element: <PrivateRoutes><Cart/></PrivateRoutes>
+    element: <PrivateRoutes><Cart /></PrivateRoutes>
   },
   {
     path: "/all-products",
-    element: <PrivateRoutes><AllProduct /></PrivateRoutes>
+    element: <AllProduct />
   },
   {
     path: "/all-products/:id",

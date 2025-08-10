@@ -2,32 +2,42 @@ import React, { useEffect, useState } from 'react';
 import Navbar from '../Components/Navbar2';
 import Card from '../Components/Card';
 import Footer from '../Components/Footer';
+import Spinner from '../Components/Spinner';
 
 const Categorizes = () => {
     const [allProducts, setAllProducts] = useState([]);
     const [categories, setCategories] = useState([]);
-    const [selectedCategory, setSelectedCategory] = useState('');
+    const [selectedCategory, setSelectedCategory] = useState("");
+    const [loading, setLoading] = useState(true); // Start with loading = true
 
     useEffect(() => {
         document.title = "Category | B2B Wholesale Platform";
     }, []);
 
     useEffect(() => {
+        setLoading(true); // Start loading
+
         fetch(`${import.meta.env.VITE_server}/all-products`)
             .then(res => res.json())
             .then(data => {
                 setAllProducts(data);
-
-                // extract unique categories
                 const uniqueCategories = Array.from(new Set(data.map(p => p.category)));
                 setCategories(uniqueCategories);
+                setLoading(false); // Done loading
             })
-            .catch(err => console.error("Error loading products:", err));
+            .catch(err => {
+                console.error("Error loading products:", err);
+                setLoading(false); // Also stop loading on error
+            });
     }, []);
 
     const filteredProducts = selectedCategory
         ? allProducts.filter(product => product.category === selectedCategory)
         : allProducts;
+
+    if (loading) {
+        return <Spinner />;
+    }
 
     return (
         <div>
@@ -49,8 +59,7 @@ const Categorizes = () => {
                             <button
                                 key={category}
                                 onClick={() => setSelectedCategory(category)}
-                                className={`px-4 py-2 border rounded-full ${selectedCategory === category ? 'bg-orange-500 text-white' : 'bg-white text-gray-800 cursor-pointer'
-                                    }`}
+                                className={`px-4 py-2 border rounded-full ${selectedCategory === category ? 'bg-orange-500 text-white' : 'bg-white text-gray-800 cursor-pointer'}`}
                             >
                                 {category}
                             </button>

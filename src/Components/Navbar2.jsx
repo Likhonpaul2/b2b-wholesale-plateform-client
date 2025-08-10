@@ -12,7 +12,7 @@ const Navbar = ({ cartCount }) => {
 
     const handleLogout = () => {
         SignOut()
-            .then(() => {})
+            .then(() => { })
             .catch((err) => console.error(err));
     };
 
@@ -48,26 +48,33 @@ const Navbar = ({ cartCount }) => {
                     All Products
                 </NavLink>
             </li>
-            <li>
-                <NavLink
-                    to="/add-products"
-                    className={({ isActive }) =>
-                        isActive ? "text-orange-500 font-semibold" : "hover:text-orange-500"
-                    }
-                >
-                    Add Product
-                </NavLink>
-            </li>
-            <li>
-                <NavLink
-                    to="/my-products"
-                    className={({ isActive }) =>
-                        isActive ? "text-orange-500 font-semibold" : "hover:text-orange-500"
-                    }
-                >
-                    My Product
-                </NavLink>
-            </li>
+
+            
+            {
+                user &&
+                <>
+                    <li>
+                        <NavLink
+                            to="/add-products"
+                            className={({ isActive }) =>
+                                isActive ? "text-orange-500 font-semibold" : "hover:text-orange-500"
+                            }
+                        >
+                            Add Product
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink
+                            to="/my-products"
+                            className={({ isActive }) =>
+                                isActive ? "text-orange-500 font-semibold" : "hover:text-orange-500"
+                            }
+                        >
+                            My Product
+                        </NavLink>
+                    </li>
+                </>
+            }
         </>
     );
 

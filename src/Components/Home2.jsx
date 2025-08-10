@@ -1,14 +1,30 @@
-import React from 'react';
-import { Link } from 'react-router';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router'; // fixed react-router import
 import Slider from './Slider';
+import Spinner from './Spinner';
 
 const Home2 = () => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 300);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) {
+    return <Spinner />;
+  }
+
   return (
-    <div>
-      {/* hero */}
-      <section className="bg-gradient-to-r from-orange-400 to-red-500 text-white py-20">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4">Welcome to B2B Wholesale Platform</h1>
+    <>
+      {/* Hero Section */}
+      <div className="bg-gradient-to-r from-orange-400 to-red-500 text-white py-20">
+        <section className="container mx-auto px-4 text-center">
+          <h1 className="text-4xl md:text-6xl font-bold mb-4">
+            Welcome to B2B Wholesale Platform
+          </h1>
           <p className="text-lg md:text-xl mb-6">
             Discover and manage wholesale products across multiple industries. Streamlined. Fast. Reliable.
           </p>
@@ -17,78 +33,26 @@ const Home2 = () => {
               Browse Products
             </button>
           </Link>
-        </div>
-      </section>
+        </section>
+      </div>
 
-      {/* Feature Categories or Highlights */}
+      {/* Feature Categories */}
       <section className="py-16 bg-gray-100">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-10">Top Categories</h2>
+          <h2 className="text-3xl font-bold text-center mb-10 text-black">Top Categories</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              {
-                name: 'Electronics & Gadgets',
-                icon: (
-                  <svg className="mx-auto mb-4 h-12 w-12 text-orange-500" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                    <rect x="3" y="7" width="18" height="13" rx="2" />
-                    <path d="M8 21h8" />
-                  </svg>
-                ),
-              },
-              {
-                name: 'Fashion & Apparel',
-                icon: (
-                  <svg className="mx-auto mb-4 h-12 w-12 text-orange-500" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                    <path d="M16 3l4 4-8 8-8-8 4-4" />
-                    <path d="M12 21V7" />
-                  </svg>
-                ),
-              },
-              {
-                name: 'Industrial Machinery & Tools',
-                icon: (
-                  <svg className="mx-auto mb-4 h-12 w-12 text-orange-500" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                    <circle cx="12" cy="12" r="3" />
-                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06A1.65 1.65 0 0 0 15 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 8.6 15a1.65 1.65 0 0 0-1.82-.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0 .33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 15 8.6a1.65 1.65 0 0 0 1.82.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 15z" />
-                  </svg>
-                ),
-              },
-              {
-                name: 'Health & Beauty',
-                icon: (
-                  <svg className="mx-auto mb-4 h-12 w-12 text-orange-500" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                    <path d="M12 22s8-4 8-10V5a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v7c0 6 8 10 8 10z" />
-                  </svg>
-                ),
-              },
-              {
-                name: 'Home & Kitchen Appliances',
-                icon: (
-                  <svg className="mx-auto mb-4 h-12 w-12 text-orange-500" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                    <rect x="3" y="11" width="18" height="10" rx="2" />
-                    <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-                  </svg>
-                ),
-              },
-              {
-                name: 'Automotive Parts & Accessories',
-                icon: (
-                  <svg className="mx-auto mb-4 h-12 w-12 text-orange-500" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                    <circle cx="7.5" cy="16.5" r="2.5" />
-                    <circle cx="16.5" cy="16.5" r="2.5" />
-                    <path d="M2 16V8a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v8" />
-                    <path d="M6 16V10h12v6" />
-                  </svg>
-                ),
-              },
+              { name: 'Electronics & Gadgets', icon: (<svg className="mx-auto mb-4 h-12 w-12 text-orange-500" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2" /><path d="M8 21h8" /></svg>) },
+              { name: 'Fashion & Apparel', icon: (<svg className="mx-auto mb-4 h-12 w-12 text-orange-500" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path d="M16 3l4 4-8 8-8-8 4-4" /><path d="M12 21V7" /></svg>) },
+              { name: 'Industrial Machinery & Tools', icon: (<svg className="mx-auto mb-4 h-12 w-12 text-orange-500" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" /><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06A1.65 1.65 0 0 0 15 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 8.6 15a1.65 1.65 0 0 0-1.82-.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0 .33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 15 8.6a1.65 1.65 0 0 0 1.82.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 15z" /></svg>) },
+              { name: 'Health & Beauty', icon: (<svg className="mx-auto mb-4 h-12 w-12 text-orange-500" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v7c0 6 8 10 8 10z" /></svg>) },
+              { name: 'Home & Kitchen Appliances', icon: (<svg className="mx-auto mb-4 h-12 w-12 text-orange-500" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="10" rx="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></svg>) },
+              { name: 'Automotive Parts & Accessories', icon: (<svg className="mx-auto mb-4 h-12 w-12 text-orange-500" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><circle cx="7.5" cy="16.5" r="2.5" /><circle cx="16.5" cy="16.5" r="2.5" /><path d="M2 16V8a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v8" /><path d="M6 16V10h12v6" /></svg>) }
             ].map((category, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-lg shadow hover:shadow-lg p-6 text-center transition"
-              >
+              <div key={index} className="bg-white rounded-lg shadow hover:shadow-lg p-6 text-center transition">
                 {category.icon}
                 <h3 className="text-xl font-semibold mb-2">{category.name}</h3>
-                <Link to={`/product-categories/${category.name}`} className="text-orange-500 font-medium hover:underline">
+                <Link to={`/product-categories/${encodeURIComponent(category.name)}`} className="text-orange-500 font-medium hover:underline">
                   Explore Products →
                 </Link>
               </div>
@@ -97,13 +61,14 @@ const Home2 = () => {
         </div>
       </section>
 
-      {/* slider Section */}
+      {/* Slider Section */}
       <section className="py-16 bg-white">
         <Slider />
       </section>
+
       {/* About Section */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4 text-center">
+      <section className="py-16 bg-white text-center">
+        <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold mb-4">Why Choose Us?</h2>
           <p className="text-lg mb-6 max-w-2xl mx-auto">
             We connect B2B buyers with trusted wholesale suppliers. Our platform ensures seamless transactions, secure data, and a wide variety of categories for every business need.
@@ -111,7 +76,7 @@ const Home2 = () => {
         </div>
       </section>
 
-      {/* New Testimonials Section */}
+      {/* Testimonials Section */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-8">What Our Clients Say</h2>
@@ -131,9 +96,10 @@ const Home2 = () => {
           </div>
         </div>
       </section>
-      {/* Call to Action Section */}
-      <section className="py-16 bg-gradient-to-r from-orange-500 to-red-400 text-white">
-        <div className="container mx-auto px-4 text-center">
+
+      {/* Call to Action */}
+      <section className="py-16 bg-gradient-to-r from-orange-500 to-red-400 text-white text-center">
+        <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold mb-4">Ready to Grow Your Business?</h2>
           <p className="text-lg mb-6 max-w-2xl mx-auto">
             Join thousands of businesses leveraging our platform for efficient sourcing and reliable partnerships.
@@ -146,7 +112,7 @@ const Home2 = () => {
         </div>
       </section>
 
-      {/* FAQ Section */}
+      {/* FAQ */}
       <section className="py-16 bg-gray-100">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-8">Frequently Asked Questions</h2>
@@ -166,7 +132,7 @@ const Home2 = () => {
           </div>
         </div>
       </section>
-    </div>
+    </>
   );
 };
 
