@@ -33,7 +33,7 @@ const Home2 = () => {
           <h1 className="text-4xl md:text-6xl font-bold mb-4">
             Welcome to B2B Wholesale Platform
           </h1>
-          <p className="text-lg md:text-xl mb-6">
+          <p className="text-lg  md:text-xl mb-6">
             Discover and manage wholesale products across multiple industries. Streamlined. Fast. Reliable.
           </p>
           <Link to="/all-products">

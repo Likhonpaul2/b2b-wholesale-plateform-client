@@ -10,6 +10,7 @@ const DarkModeToggle = () => {
         setTheme(themeValue);
         localStorage.setItem("theme", themeValue);
         document.documentElement.setAttribute("data-theme", themeValue);
+        // document.documentElement.setAttribute("class", themeValue);
     };
 
     // ✅ Set theme on initial load
@@ -35,10 +36,10 @@ const DarkModeToggle = () => {
             />
 
             {/* Sun icon (light mode) */}
-            <MdLightMode className="swap-off text-gray-700 h-7 w-7" />
+            <MdDarkMode className="swap-off text-gray-700 h-7 w-7" />
 
             {/* Moon icon (dark mode) */}
-            <MdDarkMode className="swap-on text-gray-700 h-7 w-7" />
+            <MdLightMode className="swap-on text-gray-700 h-7 w-7" />
         </label>
     );
 };

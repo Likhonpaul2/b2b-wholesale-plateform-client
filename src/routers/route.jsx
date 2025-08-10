@@ -13,6 +13,9 @@ import ProductDetails from "../pages/ProductDetails";
 import UpdateProduct from "../pages/UpdateProduct";
 import ProductCategorize from "../pages/ProductCategorize";
 import Cart from "../pages/Cart";
+import PrivacyPolicy from "../pages/PrivacyPolicy";
+import TermsConditions from "../pages/TermsConditions";
+import HelpCenter from "../pages/HelpCenter";
 
 
 export const router = createBrowserRouter([
@@ -66,6 +69,18 @@ export const router = createBrowserRouter([
   {
     path: "/register",
     element: <Register />
+  },
+  {
+    path: "/privacy-policy",
+    element: <PrivacyPolicy />
+  },
+  {
+    path: "/terms-and-condition",
+    element: <TermsConditions/>
+  },
+  {
+    path: "/help-center",
+    element: <HelpCenter/>
   },
   {
     path: "*",

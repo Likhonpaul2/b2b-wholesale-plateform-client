@@ -80,7 +80,7 @@ const Navbar = ({ cartCount }) => {
     );
 
     return (
-        <nav className="bg-white shadow-md sticky top-0 z-50">
+        <nav className="bg-white  shadow-md sticky top-0 z-50">
             <div className="container mx-auto px-4 py-4 flex justify-between items-center">
                 <Link to="/" className="text-2xl font-bold text-orange-500">
                     B2B Platform
@@ -95,7 +95,7 @@ const Navbar = ({ cartCount }) => {
                 <div className="hidden md:flex items-center space-x-4">
 
                     {/* desktop Darkmood */}
-                    <DarkModeToggle/>
+                    {/* <DarkModeToggle/> */}
 
                     {/* Cart Icon */}
                     <Link to="/cart" className="relative text-gray-700 hover:text-orange-500">
